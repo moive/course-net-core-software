@@ -30,7 +30,10 @@ namespace course_net_core_software
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                DeveloperExceptionPageOptions t = new DeveloperExceptionPageOptions {
+                    SourceCodeLineCount = 2
+                };
+                app.UseDeveloperExceptionPage(t);
             }
 
             app.UseRouting();
@@ -43,6 +46,7 @@ namespace course_net_core_software
             app.UseStaticFiles();
 
             app.Run(async context => {
+                throw new Exception("Fatal error");
                 await context.Response.WriteAsync("Hello from non-Map delegate.");
             });
         }
