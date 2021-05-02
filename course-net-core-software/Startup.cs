@@ -34,7 +34,12 @@ namespace course_net_core_software
             }
 
             app.UseRouting();
-            app.UseDefaultFiles();
+
+            DefaultFilesOptions d = new DefaultFilesOptions();
+            d.DefaultFileNames.Clear();
+            d.DefaultFileNames.Add("nodefault.html");
+
+            app.UseDefaultFiles(d);
             app.UseStaticFiles();
 
             app.Run(async context => {
