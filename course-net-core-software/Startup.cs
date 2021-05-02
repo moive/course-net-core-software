@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +26,7 @@ namespace course_net_core_software
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger <Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -35,21 +34,10 @@ namespace course_net_core_software
             }
 
             app.UseRouting();
-
-            app.Use(async (context, next) => {
-                logger.LogInformation("xxxxxxx");
-                await context.Response.WriteAsync("way 1 ");
-                await next();
-            });
-
-            app.Use(async (context, next) => {
-                logger.LogInformation("yyyyyyyy");
-                await context.Response.WriteAsync("way 2 ");
-                await next();
-            });
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.Run(async context => {
-                logger.LogInformation("zzzzzzzz");
                 await context.Response.WriteAsync("Hello from non-Map delegate.");
             });
         }
