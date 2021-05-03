@@ -23,6 +23,7 @@ namespace course_net_core_software
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options=>options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,11 +46,11 @@ namespace course_net_core_software
             d.DefaultFileNames.Clear();
             d.DefaultFileNames.Add("nodefault.html");
 
-            app.UseDefaultFiles(d);
+            //app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async context => {
-                throw new Exception("Fatal error");
                 await context.Response.WriteAsync("Hello from non-Map delegate.");
             });
         }
