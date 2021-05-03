@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace course_net_core_software.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        public JsonResult Index()
         {
-            return "I am in the controller Home";
+            return Json(new { id = 1, name = "Moises" });
         }
     }
 }
