@@ -35,6 +35,9 @@ namespace course_net_core_software
                 };
                 app.UseDeveloperExceptionPage(t);
             }
+            else if (env.IsProduction() || env.IsStaging()) {
+                app.UseExceptionHandler("/Error");
+            }
 
             app.UseRouting();
 
