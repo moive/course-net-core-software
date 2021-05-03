@@ -1,3 +1,4 @@
+using course_net_core_software.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,7 @@ namespace course_net_core_software
         {
             //services.AddMvc(options=>options.EnableEndpointRouting = false);
             services.AddMvcCore(opt=>opt.EnableEndpointRouting=false);
+            services.AddSingleton<IStockFriend, MockFriendRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

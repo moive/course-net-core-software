@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using course_net_core_software.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,16 @@ namespace course_net_core_software.Controllers
 {
     public class HomeController : Controller
     {
-        public JsonResult Index()
+        private IStockFriend _stockFriend;
+
+        public HomeController(IStockFriend stockFriend)
         {
-            return Json(new { id = 1, name = "Moises" });
+            _stockFriend = stockFriend;
+        }
+
+        public string Index()
+        {
+            return _stockFriend.giveMeDataFriend(1).Email;
         }
     }
 }
