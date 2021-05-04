@@ -20,5 +20,11 @@ namespace course_net_core_software.Controllers
         {
             return _stockFriend.giveMeDataFriend(1).Email;
         }
+
+        public JsonResult Details()
+        {
+            Friend model = _stockFriend.giveMeDataFriend(2);
+            return Json(model);
+        }
     }
 }
