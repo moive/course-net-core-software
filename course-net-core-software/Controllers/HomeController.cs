@@ -1,4 +1,5 @@
 ﻿using course_net_core_software.Models;
+using course_net_core_software.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,12 @@ namespace course_net_core_software.Controllers
 
         public ViewResult Details()
         {
-            Friend friend = _stockFriend.giveMeDataFriend(2);
-            ViewData["Head"] = "List Friends";
-            ViewData["Friend"] = friend;
-            return View(friend);
+            DetailsView detail = new DetailsView();
+            detail.Title = "List Friends";
+            detail.SubTitle = DateTime.Now.ToString("dd/MM/yyyy");
+            detail.Friend = _stockFriend.giveMeDataFriend(3);
+
+            return View(detail);
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿@model course_net_core_software.Models.Friend
+﻿@model course_net_core_software.ViewModels.DetailsView
 @{
     
 }
-<h2>@ViewData["Head"]</h2>
-<p>@Model.Name</p>
-<p>@Model.Email</p>
-<p>@Model.City</p>
+<h2>@Model.Title</h2>
+<h5>@Model.SubTitle</h5>
+<p>@Model.Friend.Name</p>
+<p>@Model.Friend.Email</p>
+<p>@Model.Friend.City</p>
