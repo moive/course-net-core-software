@@ -17,9 +17,11 @@ namespace course_net_core_software.Controllers
             _stockFriend = stockFriend;
         }
 
-        public string Index()
+        public ViewResult Index()
         {
-            return _stockFriend.giveMeDataFriend(1).Email;
+            List<Friend> model = _stockFriend.getAllFriend();
+
+            return View(model);
         }
 
         public ViewResult MyView() {

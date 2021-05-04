@@ -18,6 +18,11 @@ namespace course_net_core_software.Models
             listFriend.Add(new Friend() {Id=4, Name="Gabriela", City="Callao", Email="gvelasquez@test.com" });
         }
 
+        public List<Friend> getAllFriend()
+        {
+            return listFriend;
+        }
+
         public Friend giveMeDataFriend(int Id)
         {
             return this.listFriend.FirstOrDefault(e=>e.Id == Id);
