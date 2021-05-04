@@ -1,0 +1,1 @@
+﻿console.log("Welcome, I am site.js");
