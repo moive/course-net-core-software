@@ -21,10 +21,14 @@ namespace course_net_core_software.Controllers
             return _stockFriend.giveMeDataFriend(1).Email;
         }
 
-        public JsonResult Details()
+        public ViewResult MyView() {
+            return View("~/MyViews/Index.cshtml");
+        }
+
+        public ViewResult Details()
         {
             Friend model = _stockFriend.giveMeDataFriend(2);
-            return Json(model);
+            return View(model);
         }
     }
 }
