@@ -28,6 +28,8 @@ namespace course_net_core_software.Controllers
         public ViewResult Details()
         {
             Friend model = _stockFriend.giveMeDataFriend(2);
+            ViewData["Head"] = "List Friends";
+            ViewData["Friend"] = model;
             return View(model);
         }
     }
