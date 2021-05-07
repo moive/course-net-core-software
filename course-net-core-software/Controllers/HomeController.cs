@@ -28,12 +28,12 @@ namespace course_net_core_software.Controllers
             return View("~/MyViews/Index.cshtml");
         }
 
-        public ViewResult Details()
+        public ViewResult Details(int? id)
         {
             DetailsView detail = new DetailsView();
             detail.Title = "List Friends";
             detail.SubTitle = DateTime.Now.ToString("dd/MM/yyyy");
-            detail.Friend = _stockFriend.giveMeDataFriend(3);
+            detail.Friend = _stockFriend.giveMeDataFriend(id ?? 2);
 
             return View(detail);
         }
