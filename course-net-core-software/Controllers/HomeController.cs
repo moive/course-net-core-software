@@ -37,5 +37,10 @@ namespace course_net_core_software.Controllers
 
             return View(detail);
         }
+
+        public ViewResult Create()
+        {
+            return View();
+        }
     }
 }
