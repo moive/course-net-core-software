@@ -4,22 +4,28 @@
 }
 <h2>Add new person</h2>
 <form asp-controller="home" asp-action="create" method="Post" class="mt-5">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row mb-3">
         <label asp-for="Name" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="Email" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="City" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <select asp-for="City" asp-items="Html.GetEnumSelectList<Province>()" class="form-select"></select>
+            <select asp-for="City" asp-items="Html.GetEnumSelectList<Province>()" class="form-select">
+                <option value="">Select one</option>
+            </select>
+            <span asp-validation-for="City" class="text-danger"></span>
         </div>
     </div>
     <div class="row">

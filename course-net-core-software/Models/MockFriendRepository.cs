@@ -27,5 +27,11 @@ namespace course_net_core_software.Models
         {
             return this.listFriend.FirstOrDefault(e=>e.Id == Id);
         }
+
+        public Friend newFriend(Friend friend) {
+            friend.Id = listFriend.Max(a =>a.Id) + 1;
+            listFriend.Add(friend);
+            return friend;
+        }
     }
 }

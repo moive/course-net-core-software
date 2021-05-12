@@ -9,5 +9,6 @@ namespace course_net_core_software.Models
     {
         Friend giveMeDataFriend(int Id);
         List<Friend> getAllFriend();
+        Friend newFriend(Friend friend);
     }
 }

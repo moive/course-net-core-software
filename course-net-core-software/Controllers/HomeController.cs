@@ -42,5 +42,18 @@ namespace course_net_core_software.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(Friend a)
+        {
+            if (ModelState.IsValid)
+            {
+                Friend friend = _stockFriend.newFriend(a);
+                return RedirectToAction("index");
+                //return RedirectToAction("details", new { id = friend.Id });
+            }
+
+            return View();
+        }
     }
 }
