@@ -33,5 +33,29 @@ namespace course_net_core_software.Models
             listFriend.Add(friend);
             return friend;
         }
+
+        public Friend update(Friend updateFriend) {
+            Friend friend = listFriend.FirstOrDefault(e => e.Id == updateFriend.Id);
+
+            if (friend != null)
+            {
+                friend.Name = updateFriend.Name;
+                friend.Email = updateFriend.Email;
+                friend.City = updateFriend.City;
+            }
+
+            return friend;
+        }
+
+        public Friend delete(int Id) {
+            Friend friend = listFriend.FirstOrDefault(e=>e.Id == Id);
+
+            if (friend != null)
+            {
+                listFriend.Remove(friend);
+            }
+
+            return friend;
+        }
     }
 }
