@@ -1,6 +1,11 @@
 ﻿@model DetailsView
 @{
     ViewBag.Title = "Detail Friend | Details";
+
+    //El operador de uso combinado de NULL ?? devuelve el valor del operando izquierdo si no es null; en caso contrario evalúa el operando derecho y devuelve su resultado.
+
+    // var routePhoto = "/img/" + (Model.Friend.RoutePhoto ?? "https://loremflickr.com/640/480/brazil,girl?random=3");
+    var routePhoto = Model.Friend.RoutePhoto != null ? "/img/" + Model.Friend.RoutePhoto : "https://loremflickr.com/320/240/peru,girl?random=" + Model.Friend.Id;
 }
 <h1>@Model.Title</h1>
 <h4>@Model.SubTitle</h4>
@@ -12,7 +17,7 @@
             </div>
             <div class="card-body text-center">
                 <div class="mb-3">
-                    <img src="https://loremflickr.com/640/480/brazil,girl?random=3" style="width:100%" alt="" asp-append-version="true" />
+                    <img src="@routePhoto" style="width:100%" alt="" asp-append-version="true" />
                 </div>
                 <p>Friend Id: @Model.Friend.Id</p>
                 <p>Name: @Model.Friend.Name</p>

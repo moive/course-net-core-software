@@ -7,13 +7,15 @@
 <div class="row">
     @foreach (var item in Model)
     {
+        var routePhoto = item.RoutePhoto != null ? "/img/" + item.RoutePhoto : "https://loremflickr.com/320/240/peru,girl?random=" + item.Id;
+
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <h6>@item.Email</h6>
                     <div class="mb-3">
-                        <img src="https://loremflickr.com/320/240/peru,girl?random=@item.Id" style="width:100%" alt="" />
+                        <img src="@routePhoto" style="width:100%" alt="" />
                     </div>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
