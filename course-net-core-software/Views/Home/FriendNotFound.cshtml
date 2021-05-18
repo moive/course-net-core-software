@@ -1,0 +1,11 @@
+﻿@model int;
+@{ 
+    ViewBag.Title = "404 Error";
+}
+
+<h2>404 Rource not found</h2>
+<h4>Friend with ID=@Model not found</h4>
+
+<div class="mt-5 mb-5">
+    <a asp-controller="home" asp-action="index" class="btn btn-primary">View list friends</a>
+</div>

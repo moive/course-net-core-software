@@ -39,6 +39,11 @@ namespace course_net_core_software.Controllers
             detail.SubTitle = DateTime.Now.ToString("dd/MM/yyyy");
             detail.Friend = _stockFriend.giveMeDataFriend(id ?? 2);
 
+            if (detail.Friend == null) {
+                Response.StatusCode = 404;
+                return View("FriendNotFound", id);
+            }
+
             return View(detail);
         }
 
