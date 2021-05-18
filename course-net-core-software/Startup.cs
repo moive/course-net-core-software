@@ -44,7 +44,8 @@ namespace course_net_core_software
                 app.UseDeveloperExceptionPage(t);
             }
             else if (env.IsProduction() || env.IsStaging()) {
-                app.UseExceptionHandler("/Error");
+                //app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
 
             app.UseRouting();
@@ -57,9 +58,9 @@ namespace course_net_core_software
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
 
-            app.Run(async context => {
-                await context.Response.WriteAsync("Hello from non-Map delegate.");
-            });
+            //app.Run(async context => {
+            //    await context.Response.WriteAsync("Hello from non-Map delegate.");
+            //});
         }
 
     }
