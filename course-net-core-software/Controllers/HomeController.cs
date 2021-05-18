@@ -75,5 +75,70 @@ namespace course_net_core_software.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ViewResult Edit(int id) {
+
+            Friend friend = _stockFriend.giveMeDataFriend(id);
+            EditFriendModel editFriend = new EditFriendModel {
+                Id = friend.Id,
+                Name = friend.Name,
+                Email = friend.Email,
+                City = friend.City,
+                PhotoExistingRoute = friend.RoutePhoto
+            };
+
+            return View(editFriend);
+        }
+
+        [HttpPost]
+        public IActionResult edit(EditFriendModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //we get the data from our friend
+                Friend friend = _stockFriend.giveMeDataFriend(model.Id);
+
+                //update the model object data
+                friend.Name = model.Name;
+                friend.Email = model.Email;
+                friend.City = model.City;
+
+                if (model.Photo != null)
+                {
+                    //if a user uploads a photo they must delete the previous photo
+                    if (model.PhotoExistingRoute != null)
+                    {
+                        string route = Path.Combine(hosting.WebRootPath, "img", model.PhotoExistingRoute);
+                        System.IO.File.Delete(route);
+                    }
+
+                    // save the photo in wwwroot/img/
+                    friend.RoutePhoto = uploadImage(model);
+
+                }
+                Friend customFriend = _stockFriend.update(friend);
+
+                return RedirectToAction("index");
+
+
+            }
+
+            return View(model);
+        }
+        private string uploadImage(EditFriendModel model){
+            string filename = null;
+            if (model.Photo != null)
+            {
+                string folderUploaded = Path.Combine(hosting.WebRootPath, "img");
+                filename = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                string route = Path.Combine(folderUploaded, filename);
+                using (var fileStream = new FileStream(route, FileMode.Create)) {
+                    model.Photo.CopyTo(fileStream);
+                }
+                 //fileStream.close();
+            }
+            return filename;
+        }
     }
 }
